@@ -1,0 +1,1 @@
+The text has changed after clicking the button due to the magic of AJAX!

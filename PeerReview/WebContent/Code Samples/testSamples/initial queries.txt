@@ -1,0 +1,53 @@
+
+create table Security(
+ques_oid int not null identity,
+ques_description varchar(150) unique not null
+)
+
+
+
+
+create table users(
+user_oid int not null identity,
+userID varchar(15) unique not null,
+passwd varchar(15) not null,
+isAdmin Bit not null Default 0,
+UPI varchar(10) unique,
+Email varchar(50) unique,
+Security_Question int foreign key references Security_Question(ques_oid),
+Security_Answer varchar(100) not null
+)
+
+select * from security_question
+
+insert into users (userID, passwd, isAdmin, UPI, Email, Security_Question, Security_Answer)
+Values ('ajlewis90', 'Arthur', 1, 'alew525', 'alew525@aucklanduni.ac.nz', 1, 'Subisco')
+
+insert into users (userID, passwd, isAdmin, UPI, Email, Security_Question, Security_Answer)
+Values ('testUser', 'Arthur', 0, 'test100', 'test@aucklanduni.ac.nz', 2, 'George')
+
+
+<li><a href="#">B2B Portal</a>
+				<ul>
+				   <li><a href="#">B2B Portal</a></li>
+				   <li><a href="#">Secure Data-Driven Listings</a></li>
+				   <li><a href="#">Secure Shopping Cart</a></li>
+				</ul>         
+			 </li>
+
+
+create table problem(
+PID int not null identity,
+Problem_Number varchar(5) Primary Key,
+Problem_Name varchar(30) not null,
+Problem_Description varchar(500) not null
+);
+
+create table SampleSolutions(
+SID int not null identity,
+Solution_Number varchar(5) constraint chk_sample_values check(Solution_number IN ('S1', 'S2', 'S3', 'S4')) not null,
+Problem_Name varchar(30) not null,
+Problem_Description varchar(500) not null,
+Problem_Number varchar(5) foreign key references Problem(Problem_Number) not null,
+Problem_Solution_Pair AS Problem_Number + Solution_Number Primary Key
+);

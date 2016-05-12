@@ -1,0 +1,8 @@
+def free_space(cargo, box_capacity):
+
+	filledSpaces = 0
+	while (filledSpaces < cargo):
+		filledSpaces = filledSpaces + box_capacity
+
+	emptySpaces = filledSpaces-cargo
+	return emptySpaces;

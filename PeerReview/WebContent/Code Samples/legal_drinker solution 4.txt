@@ -1,0 +1,5 @@
+def legal_drinker(under_18,supplied_by_guardian):
+
+	return not under_18 or supplied_by_guardian
+
+

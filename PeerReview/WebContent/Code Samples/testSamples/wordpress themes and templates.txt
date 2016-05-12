@@ -1,0 +1,61 @@
+wordpress themes and templates:
+
+A wordpress theme is a layout. It serves as a means to change the design of your website. But it does more than this.
+Themes provide much more control over the look and presentation of website content.
+
+A theme is a collection of files that work together to produce a GUI with a unifying design for the website.
+These files are called "Template" files.
+
+A Theme modifies the way the site is displayed, without modifying the underlying software. 
+Themes may include customized template files, image files (*.jpg, *.gif), style sheets (*.css), 
+custom Pages, as well as any necessary code files (*.php)
+
+Theme framework:
+WordPress Themes typically consist of three main types of files, in addition to images and JavaScript files.
+
+-The stylesheet called style.css, which controls the presentation (visual design and layout) of the website pages.
+-WordPress template files which control the way the site pages generate the information from your WordPress database to be displayed on the site.
+-The optional functions file (functions.php) as part of the WordPress Theme files.
+
+templates:
+- Templates are the files which control how your WordPress site will be displayed on the Web. 
+- These files draw information from your WordPress MySQL database and generate the HTML code which is sent to the web browser. 
+- WordPress allows you to define as few or as many Templates as you like all under one Theme. 
+- Each of these Template files can be configured for use under specific situations
+
+The wp_options table in the database stores the themes styles and settings
+
+find out why the customization you apply overriddes the one from style.css
+
+
+Theme features:
+They are defined by theme authors to provide support to different features of a theme during customization via cms:
+Features include:
+- Custom backgrounds
+- custom headers
+- content width
+- sidebars
+- navigation menus
+- post formats and thumbnails
+- editor style
+
+- A function called as add_theme_support() is used to support customization in functions.php
+
+So, in case of the custom background feature, customization is provided for the bg color and image
+- pass the 'custom-background' argument to the add_theme_support()
+- and then add an array of default arguments to set elements like the default color, image etc
+
+- The purpose of this call to add_theme_support() is to enable the Custom Background screen 
+in the administrator's Appearance menu. 
+- So, when admin sets up custom values for the theme, wordpress generates and extra sheet that is
+in-line with the HTML headers (usually before the end of the doc's HEAD elemet)
+- this extra css overrides the background values from style.css.
+
+eg:
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #bdd96e; }
+</style>
+
+wp_options table loads the above content
+
+http://codex.wordpress.org/Database_Description

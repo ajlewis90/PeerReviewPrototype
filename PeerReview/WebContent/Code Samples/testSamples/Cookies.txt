@@ -1,0 +1,25 @@
+* for assignment:
+
+a piece of info exchanged b/w a client and a web service
+
+the response by the service to the client contains headers
+a cookie is a key-value pair sent back by the web service
+
+sender then sends back a cookie called as "Sessiontoken" which has a value and the expirty time associated with it
+
+cookies are a way of associating a "conversational" state with a request
+
+so cookie can identify who is making the request and wants to talk to the web service
+
+a cookie object can be injected in a get request to get more info about the cookie being exchanged
+
+Automatic type conversion:
+- http is a text based protocol where all uris are represented as strings
+- sometime while writing handler methods it is more useful to use classes and not strings
+- JAXRS impl looks at the formal arg type associated with injected values:
+	- If they are not strings then the JAXRS runtime does try to convert them into an instance of a class
+- Rules - slide 16 
+	- auto convert String from uri request into some primitive type viz boolean, int, double etc
+	- if you want to inject an arg as a class, then ok as long as it has one constructor which has one string arg
+	- other rules static method value of - slide 17 of lecture 4 very important
+	- collections can also be injected

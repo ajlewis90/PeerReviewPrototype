@@ -1,0 +1,50 @@
+
+/* Javascript events list */
+http://www.w3schools.com/jsref/dom_obj_event.asp
+
+/* Javascript String Methods */
+http://www.w3schools.com/js/js_string_methods.asp
+
+/* JS Numbers */
+- 64- bit type
+- Can be written with or without decimals
+
+JS Number Methods
+http://www.w3schools.com/js/js_number_methods.asp
+
+
+/*JS Dates*/
+var d = new Date()
+	new Date(milliseconds)
+	new Date(dateString)
+	new Date(year, month, day, hours, minutes, seconds, milliseconds) 
+var d = new Date("October 13, 2014 11:13:00"); // using date string to create a new date obj from the specified date and time
+
+/*JS Arrays and Array Methods*/
+
+http://www.w3schools.com/js/js_array_methods.asp
+
+/*JS Type conversion*/
+http://www.w3schools.com/js/js_type_conversion.asp
+
+/* JS regex*/
+http://www.w3schools.com/js/js_regexp.asp
+
+/*JS Strict mode*/
+http://www.w3schools.com/js/js_strict.asp
+
+/*JS hoisting */
+http://www.w3schools.com/js/js_hoisting.asp
+
+/*JS points to remember*/
+http://www.w3schools.com/js/js_conventions.asp
+http://www.w3schools.com/js/js_best_practices.asp
+http://www.w3schools.com/js/js_mistakes.asp
+http://www.w3schools.com/js/js_performance.asp
+
+JSON: http://www.w3schools.com/js/js_json.asp
+
+JS Objects
+
+JS Prototypes
+

@@ -1,0 +1,55 @@
+
+System class - final class - so can't be instantiated. Provides functionality such as std I/O, std error output, 
+			- provides Access to env variables?? (how?)
+			- means of loading librariesand files (how?)
+			- provides utility method to copy a portion oa an array
+				arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+				Copies an array from the specified source array, beginning at the specified position, to the specified position of the destination array.
+
+out variable - it is static member of the System class and is a reference (instance/object of) of the PrintStream class?
+
+Println() - an overloaded public method of the PrintStream class
+
+
+ecj compiler - inside the Eclipse (IDE)
+
+
+
+http://www.javaworld.com/article/2075796/java-platform/java-101--class-and-object-initialization.html
+
+http://stackoverflow.com/questions/19004441/difference-between-final-class-and-static-class
+
+https://www.artima.com/objectsandjava/webuscript/InitCleanup1.html
+
+http://javarevisited.blogspot.co.nz/2013/03/difference-between-singleton-pattern-vs-static-class-java.html
+
+http://stackoverflow.com/questions/16795374/what-does-it-mean-to-extend-a-static-class-in-java
+
+http://javarevisited.blogspot.co.nz/2011/12/final-variable-method-class-java.html
+
+static classes cannot be extended in java - http://stackoverflow.com/questions/16795374/what-does-it-mean-to-extend-a-static-class-in-java
+
+Java execution - http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.1
+
+singleton/private constructor - http://www.javapractices.com/topic/TopicAction.do?Id=40
+
+java import - http://stackoverflow.com/questions/1053658/how-is-import-done-in-java
+
+
+
+
+In Java, static fields are initialized first, and everything else comes after. 
+So even before the JVM and the System class is fully initialized, the JVM tries to initialize System.out.
+
+Unfortunately at this point the rest of the JVM isn’t properly initialized so it’s impossible to reasonably set System.out at this point.
+The best that could be done would be to set it to null.
+
+The System class, along with System.out is properly initialized in initializeSystemClass() which is called by the JVM after static and thread initialization.
+
+There is a problem, however. System.out is final, meaning we cannot simply set it to something else in initializeSystemClass(). 
+There’s a way around that, however. Using native code, it is possible to modify a final variable.
+There is a native (?) method called setOut0() which actually initializes System.out in initializeSystemClass()
+
+
+http://javarevisited.blogspot.co.nz/2012/07/when-class-loading-initialization-java-example.html ????
+

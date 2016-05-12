@@ -1,0 +1,13 @@
+def free_space(cargo, box_capacity):
+
+	index=0
+    	cargo1=cargo
+    	while (cargo1 >= box_capacity):
+        cargo1 = cargo1-box_capacity
+        index=index+1
+
+    	if cargo1!=0:
+        index=index+1
+
+    	return box_capacity*index-cargo
+

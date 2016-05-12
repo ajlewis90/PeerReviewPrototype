@@ -1,0 +1,144 @@
+
+the parolee object can be related/linked to another parolee object ((this is a reflexive relationship). 
+It is a disassociate i.e. the parolee must not mix with that parolee - this is a parole condition and if broken...
+
+A parolee can have a criminal profile and thus a string of convictions associated with the criminal profile
+
+Some parolees might be subject to a curfew (say stay at home for certain hours)
+this curfew has an address - could be the parolee's home address or the curfew address
+An address is also defined by a Geo Location (position in terms of latitude and longitude)
+A parolee can have a list of movements. 
+Overtime they can be associated with an increasinglist of moving objects that represent their movement history 
+
+Learn 230 - Object orientation UML diagrams to understand associations better
+
+XML - provides a data format to exchange data between 2 parties (client and a web service for instance)
+It is a Textual lang to add meaning to data - done by marking up data using elements and attributes
+
+- XML separates content from presentation - independent of the way data is presented on the web browser (unlike HTML)
+-Tools like XSLT can transform XML doc into an HTML doc into a web Browser
+
+In this course focus is just on the means of how data is exchanged between a client and the server
+
+- Promotes interoperability?  
+
+-all xml docs have one root
+-good for representing heirarchical/tree strucutres
+- root elemnt has a sub element which in turn have sub elements
+- elements ahve attbs which have a value
+
+So even Parolee info can be represented via xml docs
+
+HTTP methods:
+get, put, post, delete
+
+-When a web service is defined, these http methods are mapped to a set of uris
+In this design:
+
+GET - read only request ie data retrieval from web service. So web service does not change it's state
+usually too much data; so use query parameters supported by http proocol
+eg: start index = 0, size = 5
+another way pass a uri as a parameter eg: 117 - ie xml representation of 1 parolle identified by number 117
+
+POST - creates new resources inside a web service viz. new parolee objects
+the web service creates the newid value
+the POST request to do it does not contain the value
+what the user would need is the URI (location header) to this new parolee created by the web browser. 
+THis URI will contain the id value too
+POST returns URI
+
+Administrators must be able to update the details of a parolee held by the web service.
+PUT - identify the parolee id to modify and pass an xml representation to describe the updated state of the parolee
+In this case PUT method does not return any content (ie data)
+But returns  a successful response (anything in 2xx range) 
+
+DELETE - as the name suggests
+apply it to a particular parolee (id) and wait for a successful response code (2xx)
+
+
+JAX-RS - to implement his service
+Java API for RESTfuls ervices
+- JAX-RS is an open source specification for a framework that simplifies development
+of restful web services
+- Promotes modifiability (swapping in and out of a logger implementation like L4J)
+	so it can be substituted with another implementation of the specification
+- open like HTTP/HTML
+
+This course uses the RESTEasy implementation of the JAX-RS specification by JBoss
+
+- less work to develop a web service as compared to writing a servlet from scratch
+- provides a layer of abstraction to quickly implement web services
+- Annotation based - embeds  meta info which sits in your class file - there at compile time and it persisted at runtime
+	- this info is pulled out using reflexion?
+	- one can specify meta data about the service which is being implemented
+
+- Uses dependency injection - aspect of present day SOFTENG
+- Msg body marshallers and unmarshallers
+	- web service that you write must be able to deal with different data formats - xml, text, json etc
+	- this mechanism supports that
+
+- support content negotiation 
+	when a client requests data by sending GET, you can specify what you want eg: HTML, XML etc
+
+
+Java Bean - class which has a set of properties which can be accessed (getters) and modified (Setters)
+ - Most domain classes in a web service are "simple bean classes" POJO??
+
+A resource class (Service class) implements the behavior of the web service
+	- A data structure is needed to store the parolee objects in memory (inside the web service)
+	- has to be done in a "threadsafe (??) way"  since a resource object can be operated by concurrent threads
+	- any data within a resource objects needs protection from concurrent access
+	- use a Hash table and an AtomicInteger as the thread safe objects
+	- the AtomicInteger stores the next unique id for a given parolee. It is a counter which increments each time it is called?
+-annotation eg:
+	- @path("/parolees") - defines the uri to be processed by an instance/obj of the parolee resource class
+
+- when an HTTP request comes into the server, it goes thru the JAX-RS runtime.
+- this runtime knows about the annotated data on the resource objects and knows which methods to call on which resource objects
+
+Creating a parolee object in ParoleeResource class:
+-@POST
+- @Consumes("application/xml")  - expects payload(http method body) contains an xml document that represents the new parolle to be created
+
+- Annotations help the JAX RS runtime to forward incoming HTTP requests to the right handler method of the parolee resource obj
+- Input stream parameter is a representation of HTTP msg body (or handle to incoming xml)
+- Create a Parolee java object based on the incoming xml doc (readParolee method)
+- then the service sets the id of the newly created parolee object by incrmenting the atomic counter and getting it's value!
+- then it is added to the thread safe hash table (put request which uses the id as the key and the obj as the value) - so it's in memory now!
+- return the URI (http response) of the newly created parolee by appending it's id and building it
+
+Retrieving parolee by it's id
+-@GET
+-@Path("{id]")
+-@Produces("application/xml")
+
+streamingOutput getParolee(@PathParam("id") int id){
+...}
+- so the path takes a template parameter called id
+- a template param is anything enclosed inc urly brackets
+
+bind this template param to the method getparolee
+	- so this extracts info from the uri and be able to use it for processing the handler method
+
+WebApplicationException - returns 404 ie resource not found and is handled by the JAX RX runtime
+
+- A streaming output stream object is created which stores the xml representation of the parolee
+- The JAX-RS runtime calls back on this streaming output object and extracts the contents that represent the parolee
+- it then writes these contents to the http response body and goes back to the client
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

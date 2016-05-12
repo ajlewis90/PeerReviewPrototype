@@ -1,0 +1,42 @@
+
+framework of cms database
+
+
+what table does the page get saved in before and after publish - understand how this works and locate this in the project
+Hmm.....they seem to be on the same table (wp_posts) but the status column is different - find out why a draft can't be loaded
+
+how to unpublish a page - go to the page and navigate to the status option on the right. Click edit and change it to "draft" from the drop down. Click Save draft and
+then try reloadin the url
+
+difference between web and application server 
+
+http://www.diffen.com/difference/Application_Server_vs_Web_Server
+
+A Web server is used to handle Http protocol (i.e process and respond requests made using the http protocol. Responses are in the form of HTML docs and objects
+linked to it. Keeps HTML, PHP and ASP pages avialable on web browsers for viewing when users access the website)
+
+Note that Apache is a web server
+
+
+difference between a website and a web application?
+http://plexusweb.com/2013/04/web-site-vs-web-application-whats-the-difference/
+
+how are pages and themes linked? tables?
+
+when ypu are creating your own template/theme - then how does that work?
+
+base rule: all content must be content managed (text, video, audio, images etc)
+ideally 3 days (1 day - then you are great)
+make side tabs, upper tabs, set pages to these new tabs
+ - each page's content should be different eg: video, images
+ - content should be nice and presentable
+
+to be done:
+ - use cms to modify background, themes, use generic css
+ 	- how to use templates - learn this properly
+
+to be done:	- 
+-write javascript for your login - find out what is your login.php - this referes content of the login page
+- login page must refer to content on the cms - redirect it to a page on your cms
+
+A sample project on Cricket

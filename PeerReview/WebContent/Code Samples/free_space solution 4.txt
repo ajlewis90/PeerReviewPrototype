@@ -1,0 +1,8 @@
+def free_space(cargo, box_capacity):
+
+	for i in range(0,cargo+1):
+		spaces=box_capacity*i
+		if(spaces>=cargo):
+			return spaces-cargo
+
+

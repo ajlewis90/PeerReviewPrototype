@@ -1,0 +1,251 @@
+
+
+learn css: 
+positioning - what is absolute and relative?
+cell spacing, cell padding
+
+- Cascading Style Sheets define how html elements are to be displayed
+- An external css file can be linked to one or more files that display your web content
+	- So the entire look of the website can change by modifying something in this external css
+	- This saves work and time
+
+css declaration:
+html element (or selector) {property1:value; property2:value;}
+
+eg: h1{color:blue; font-size-12;}
+
+css id selector:
+Prefixed by a # and uses the 'id' attribute of an html element to select a specific element
+
+eg: html code: <p id = "para1">Hi!</p>
+    css will use this as: #para1{text-align: center; color:blue;}
+
+css class selector:
+Prefixed by a . and uses the 'class' attribute of an html element to select a specific element
+
+eg: html code: <p class = "center">Hi!</p>
+    css will use this as: .center (or p.center){text-align: center; color:blue;}
+
+If 2 or more selectors have the same CSS definitions, they can be grouped by separating them with a comma
+eg: h1, h2, p {text-align:center; color:green;}
+
+
+There are 3 ways of inserting a style-sheet:
+
+External -> Provides the ability to change the entire look of the website by just changing one file
+An external *.css file is linked to your web page(s) using the <link> elemetn that goes inside the <head> section:
+
+eg: <head>
+	<link rel = "stylesheet type = "text/css" href="mystyle.css">
+</head>
+
+External stylesheets must not contain any html tags and must be saved with the ".css" ext
+
+Internal -> These style sheets are used if one single page has a unique style.
+	    This is embedded within the <style> element within the <head> section
+eg:
+<head>
+<style>
+body{ background-color: blue;}
+h1 {margin-left: 40px; color: maroon;}
+
+</style>
+</head>
+
+Inline -> Used to apply a unique style for a single element.
+	 Add the style attb to the relevant tag(s)
+	This has the highest priority if inline > External/Internal > Browser defaults
+
+eg: <h1 style ="color:red; margin-left: 10px"> This is heading1</h1>
+
+
+Background			
+background-image: url ("image path");
+background-repeat:repeat-x; - repeated only horizontally - image looks better
+background-color
+background-postion: right top;
+
+Shorthand property fro background : background
+body
+{
+	background: #fffff url("tree.jpg") no-repeat right top;
+}
+
+css color property -> sets color of Text
+
+text-align property -> sets horizontal alignment of text (center; justify; right or left)
+
+text-decoration property -> none, undeline, overline, line-through
+
+text-transformation -> uppercase, lowercase, capitalize (ie first letter of each word is uppercase)
+
+text-indent:50 px -> specifies the indentation for the first line of text
+
+font-style: normal/italic/oblique (oblique is similar to italic but less supported)
+
+font-family: "Times New Roman", Times, serif;
+
+font-size: 10px -> setting this in pixels give u full control over the text size
+	   1em	-> developers use "em" as the standard inbstead of pixels, 1em = 16 px ie default  size in browsers
+	   100% -> a solution that works good is to set the default font-size in percent for the body element and then use em/px
+
+a:link - normal and unvisited link
+a:visited
+a:hover
+a:active - link the moment it is clicked
+order rules -> a:hover must come after a:link and a:visited
+	    -> a:active "" after a:hover
+
+background color property and text-decoration property can be used with links
+
+list-style-type:
+list-style-postion:
+list-style-image:
+
+
+
+*** CSS box-model: This is used in CSS when talking about design and layout.
+HTML elements are considered as boxes
+
+This box model allows adding a border around html elements and define spacing between them
+
+Margin > Border > Padding > Content
+
+Margin is transparent and is used to clear the area around an element outside the border
+Padding is transparent and is used to clear area around the content
+
+Css borders:
+border-style: solid, dotted, dashed, double (2 borders with same width), groove/inset/outset/ridged (3d  border, depends on color)
+border-width: 50 px , medium etc (Requires border-style property to be set first, else wil not work)
+
+border-color: 3 types of values (this also requires the border-style property to be set first)
+ - name eg: red
+ - hex eg: #f7c7b7
+ - rgb eg: rgb(255,0,0)
+
+border-top-style (bottom, left, right): dotted, solid etc
+
+border shorthand: p{border: 5px solid red;}
+
+Margin:
+margin-top/left/right/bottom: 100 px
+
+margin shorthand
+margin: 25px 10px 75px 100px (top right bottom left -clockwise)
+margin: 3 dimensions (top right+left bottom)
+margin: 2 dims (top+bottom right+left)
+margin 1dim (all 4)
+
+Padding: similar to margin syntax
+
+CSS dimensions: width and height control -> max-width/height, min-width/height
+
+***CSS display property: Most important property to control layout.
+Specifies how an element can be displayed
+
+Default display values for most html elements is 'block' or 'inline'
+
+A block-level element always starts on a new line and takes up the full width available 
+(stretches out to the left and right as far as it can).
+eg: div, h1-h6, p, form, header, footer, sectiopn, body
+
+An inline element does not start on a new line and only takes up as much width as necessary.
+
+This is an inline <span> element inside a paragraph <p>
+eg: span, a, img
+
+display: none; is commonly used with JavaScript to hide and show elements without deleting and recreating them.
+
+The <script> element use display: none; as its default. 
+
+****CSS position property: specifies the type of positioning method used for an element.
+
+There are four different position values:
+    static
+    relative
+    fixed
+    absolute
+
+Elements are then positioned using the top, bottom, left, and right properties. 
+However, these properties will not work unless the position property is set first. 
+They also work differently depending on the position value.
+
+-An element with position: static; is not positioned in any special way; 
+it is always positioned according to the normal flow of the page
+
+div.static {
+    position: static;
+    border: 3px solid #8AC007;
+}
+
+-An element with position: relative; is positioned relative to its normal position.
+->Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position.
+
+div.relative {
+    position: relative;
+    left: 30px;
+    border: 3px solid #8AC007;
+}
+
+- An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. 
+-> The top, right, bottom, and left properties are used to position the element.
+
+- An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+- If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+
+
+
+The z-index property specifies the stack order of an element (which element should be placed in front of, or behind, the others).
+
+The float property: used to wrap text around images
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+the clear property: 
+- used to control the behavior of floating elements.
+- Elements after a floating element will flow around it. To avoid this, use the clear property.
+- specifies on which sides of an element floating elements are not allowed to float
+
+cell-padding: In an html table, it is the space between the cell's walls and the cell's content.
+cell-spacing: " " space (in px) between cells
+
+
+Not directly supported in html5 - use css
+	
+Default:
+
+The default behavior of the browser is equivalent to:
+
+table {border-collapse: collapse;}
+td    {padding: 0px;}
+
+Cellpadding:
+
+Sets the amount of space between the contents of the cell and the cell wall
+
+table {border-collapse: collapse;}
+td    {padding: 6px;}
+
+
+Cellspacing
+
+Controls the space between table cells
+
+table {border-spacing: 2px;}
+td    {padding: 0px;}
+
+        enter image description here
+Both
+
+table {border-spacing: 2px;}
+td    {padding: 6px;}
+
+enter image description here
+Both (special)
+
+table {border-spacing: 8px 2px;}
+td    {padding: 6px;}
+
+        enter image description here

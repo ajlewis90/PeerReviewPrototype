@@ -1,0 +1,38 @@
+ Video 1 - Intro to MVC framework
+
+A guideline to write code to develop an application using a UI
+
+Model can not just be data it can be any business logic generating the data (eg: business service part of code in model class - JSF)
+
+But main idea - Biz logic and presentation must be developed as separate components
+
+
+
+Video 2 - Intro to Spring MVC framework
+
+A web application development framework based on MVC guidelines.
+
+Best - Simple but most powerful feature - DI or IoC
+
+- Helps developers write web apps
+
+- Front controller delegates request received from clients to many helpers (Handler Mapping, Data Generator, View Resolver) who do processing. Then the front controller returns response in form of html
+
+- Handler Mapping scans the url and tells the front controller, the exact address of the guy who can generate data for this web page content requested by end user
+
+ - Based on info provided by Handler Mapping, the Front Controller passes this information to the "Data Generator" 
+	who will prepare the data (create a Java obj) for the specific web page request
+	 - This Data Generator either contains biz logic to generate data or it may get data directly from db.
+	- Also may call other java classes to do this job
+	- The Data generator (this is also a controller) will send this java object holding data to front controller 
+		 + the name of the compoent which retreives data from java obj + mixing with html (ie name of view) to prepare the actual response
+
+- This info is then sent my Front Controller and sent to another helper i.e. View Resolver helper which will generate the actual response 
+	i.e. putting data from java obj (Model component) into html code into desired fashion and returns it to Front Controller
+
+- The Front Controller will then send this html data as the response to the client's browser to display it. 
+	This is the VIew component
+
+- FrontController aka DispatcherServlet in Spring MVC framework
+	- It takes the full responsibility of processing the url request and sending back response to client with the help of helpers
+

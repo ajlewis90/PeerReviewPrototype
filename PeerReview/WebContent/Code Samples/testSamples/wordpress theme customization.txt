@@ -1,0 +1,6 @@
+
+wordpress themes:
+
+syle.css
+header.php
+footer.php

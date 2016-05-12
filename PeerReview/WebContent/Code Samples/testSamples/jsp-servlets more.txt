@@ -1,0 +1,28 @@
+
+
+use jstl beans for my login class User and Resource Bundle
+
+requestScope - implicit object, need not declare it and is an EL implicit object (EL = Expression Language)
+another one is param ie a parameter implicit object
+
+another one is sessionScope if value is to be accessed from the user's session - should be careful here since it would be present for the entire session
+
+just put it into session if it is needed across different servlets
+
+another one is headerValues, paramValues
+
+WHy EL? it gracefully handles exception (Scripltlets do not do this as they would throw exceptions if they are not handled)
+
+
+<%
+		ResourceBundle rb = (ResourceBundle) session.getAttribute("language preference");
+		
+		response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0"); 
+		response.addHeader("Pragma", "no-cache"); 
+		response.addDateHeader ("Expires", 0);
+	%>
+	
+	<%=rb.getString("HELLO")%>, <jsp:getProperty property="userName" name="user"/>
+	<h3><%=rb.getString("SUCCESS")%></h3>
+
+	<br><%=rb.getString("WELCOME")%>

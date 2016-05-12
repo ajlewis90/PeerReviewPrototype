@@ -1,0 +1,11 @@
+def legal_drinker(under_18,supplied_by_guardian):
+
+	if(under_18 == True):
+		if(supplied_by_guardian == True):
+			return True
+		elif(supplied_by_guardian == False):
+			return False
+	elif(under_18 == False):
+		return True
+
+

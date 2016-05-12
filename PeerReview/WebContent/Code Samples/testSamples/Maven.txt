@@ -1,0 +1,65 @@
+maven - tool to build projects,  automates the build process
+-project mgmt and compreshension tool
+- has a std dir layout  and build lifecycle?
+- Maven makes life of developer easy while creating reports, checks, build and testing automation setups
+
+In summary,
+Maven simplifies and standardizes the project build process. 
+It handles compilation, distribution, documentation, team collaboration and other tasks seamlessly. 
+Maven increases reusability and takes care of most of build related tasks
+
+plugins - provide reusable resources
+
+jar file - archived file - contains compiled classes ie byte code and other resources the compiled classes need
+
+to run a executable jar file in windows commnad line:
+java -classpath "name of jar file" "name of the class inside the jar file you want to execute" 
+
+pom file xml file which drives entire build of the project (analogous to Android's Manifest) - project object model
+xml doc that describes all project's characteristics
+changes to maven's defau;ts are documented here
+
+local repo - stores all plugins implementations that you want to use
+- stores all dependencies the project has on third party libs ie libs not part of the std jdk
+usually empty but fetches stuff from the central remote repository whenever required
+
+
+clean life-cycle phase - deletes the contents of the target directory
+
+pre-clean and post clean execute before and after clean phase resp
+
+co-ordinates - groudp id (domain name)
+artifact id - project name
+version number
+these tthree attbs  are co-rdinates to uniquely identify a project
+
+use SLF4J ie Simple Logger Facade for Java for logging messages - Logging framework, not part of the regular jdk. 
+This is actually a facade since it provides a logger interface
+
+Log For J - L4J
+
+Adv: One can swap between logging frameworks without having to change the application's source code
+
+java.util.logging - other framework
+
+qlty attbs - modifiability ie easy to change in the future - so all appln code written using slf4j logger interface
+
+understand Logger and getLogger methods - purpose
+
+mavenrepository.com - third party libraries to work with
+
+maven - tool to build projects
+
+what is a dependency in maven?
+
+what are transitive dependencies in maven?
+
+Log4J must be configured:
+- has a root logger which has a level that can be set
+- this level is inherited by any other appln u create
+- another way to set loggin is using an appender list
+- assumes a properties file exists (Log4J.properties) - stored under src/main/resources/
+
+- Dependency mgmt is a core function of build tools like Maven
+- conflicts occur if a dependency tree contains different versions of a particular module
+- direct dependecies take precedence over transitive ones. These are the ones explicitly stated in the pom files

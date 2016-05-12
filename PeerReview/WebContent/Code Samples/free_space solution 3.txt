@@ -1,0 +1,8 @@
+def free_space(cargo, box_capacity):
+ 
+	if cargo % box_capacity == 0:
+		return 0
+ 
+	return box_capacity - cargo % box_capacity
+
+
